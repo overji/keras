@@ -850,6 +850,7 @@ def linspace(
         ov_opset.constant(0, ov_type),
         ov_opset.constant(num, ov_type),
         ov_opset.constant(1, ov_type),
+        output_type=ov_type
     )
     linspace_values = ov_opset.add(
         start, ov_opset.multiply(range_indices, step)
