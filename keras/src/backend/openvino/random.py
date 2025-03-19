@@ -1,7 +1,7 @@
-import numpy as np
 import openvino.runtime.opset14 as ov_opset
 from openvino import Type
 
+import numpy as np
 from keras.src.backend.config import floatx
 from keras.src.backend.openvino.core import OPENVINO_DTYPES
 from keras.src.backend.openvino.core import OpenVINOKerasTensor

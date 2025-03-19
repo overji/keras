@@ -1,7 +1,7 @@
-import numpy as np
 import openvino.runtime.opset14 as ov_opset
 from openvino import Type
 
+import numpy as np
 from keras.src.backend import config
 from keras.src.backend.common import dtypes
 from keras.src.backend.common.variables import standardize_dtype
@@ -850,8 +850,14 @@ def linspace(
         ov_opset.constant(0, ov_type),
         ov_opset.constant(num, ov_type),
         ov_opset.constant(1, ov_type),
-        output_type=ov_type
+        output_type=ov_type,
     )
+
+    # Ensure the range_indices shape is compatible with start and stop
+    range_indices = ov_opset.reshape(
+        range_indices, [-1] + [1] * (len(start.get_partial_shape()) - 1)
+    )
+
     linspace_values = ov_opset.add(
         start, ov_opset.multiply(range_indices, step)
     )

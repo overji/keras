@@ -1,7 +1,6 @@
 import contextlib
 import warnings
 
-import numpy as np
 import openvino as ov
 import openvino.runtime.opset14 as ov_opset
 from openvino import Model
@@ -9,6 +8,7 @@ from openvino import Tensor
 from openvino import compile_model
 from openvino.runtime import Type
 
+import numpy as np
 from keras.src import tree
 from keras.src.backend.common import KerasVariable
 from keras.src.backend.common import dtypes
