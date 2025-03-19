@@ -855,7 +855,7 @@ def linspace(
 
     # Ensure the range_indices shape is compatible with start and stop
     range_indices = ov_opset.reshape(
-        range_indices, [-1] + [1] * (len(start.get_partial_shape()) - 1)
+        range_indices, [-1] + [1] * (len(start.get_output_partial_shape(0)) - 1)
     )
 
     linspace_values = ov_opset.add(
