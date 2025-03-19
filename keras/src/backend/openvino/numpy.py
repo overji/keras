@@ -864,9 +864,6 @@ def linspace(
     start = ov_opset.reshape(
         start, [1] + list(start.get_output_partial_shape(0)), special_zero=False
     )
-    stop = ov_opset.reshape(
-        stop, [1] + list(stop.get_output_partial_shape(0)), special_zero=False
-    )
 
     linspace_values = ov_opset.add(
         start, ov_opset.multiply(range_indices, step)
