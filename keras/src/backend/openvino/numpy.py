@@ -822,9 +822,7 @@ def less_equal(x1, x2):
     return OpenVINOKerasTensor(ov_opset.less_equal(x1, x2).output(0))
 
 
-def linspace(
-    start, stop, num=50, endpoint=True, retstep=False, dtype=None, axis=0
-):
+def linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None, axis=0):
     start = get_ov_output(start)
     stop = get_ov_output(stop)
 
@@ -855,7 +853,7 @@ def linspace(
 
     # Ensure the range_indices shape is compatible with start and stop
     range_indices = ov_opset.reshape(
-        range_indices, [-1] + [1] * (len(start.get_output_partial_shape(0)) - 1)
+        range_indices, [-1] + [1] * (len(start.get_output_partial_shape(0)) - 1), special_zero=False
     )
 
     linspace_values = ov_opset.add(
